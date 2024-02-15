@@ -18,7 +18,7 @@ class BoxTextField extends StatefulWidget {
   final String? hintText;
 
   const BoxTextField({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     this.isSenha = false,
@@ -31,7 +31,7 @@ class BoxTextField extends StatefulWidget {
     this.textInputType,
     this.formFieldKey,
     this.hintText,
-  }) : super(key: key);
+  });
 
   @override
   State<BoxTextField> createState() => _BoxTextFieldState();

@@ -107,6 +107,8 @@ class _CadastroPageState extends State<CadastroPage> {
                     icon: Icons.lock,
                     label: 'Senha',
                     hintText: 'Insira a sua senha',
+                    isSenha: true,
+                    
                     validator: passwordValidator,
                   ),
                   const SizedBox(

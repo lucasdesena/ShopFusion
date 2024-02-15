@@ -59,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                 icon: Icons.lock,
                 label: 'Senha',
                 hintText: 'Insira a sua senha',
+                isSenha: true,
                 validator: passwordValidator,
               ),
               const SizedBox(
@@ -113,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> login() async {
     if (_formKey.currentState!.validate()) {
       await _authController
-          .logarUsuario(emailController.text, senhaController.text)
+          .loginUsuario(emailController.text, senhaController.text)
           .then((mensagem) {
         if (mensagem.isNotEmpty) {
           utils.showToast(
@@ -121,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
             tipo: TipoMensagem.erro,
           );
         } else {
-          Get.toNamed('/map');
+          Get.offAllNamed('/map');
         }
       });
     }

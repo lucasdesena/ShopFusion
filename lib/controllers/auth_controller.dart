@@ -81,18 +81,40 @@ class AuthController extends GetxController {
   }
 
   ///Método para efetuar a autenticação do usuário no firebase
-  Future<String> logarUsuario(String email, String senha) async {
+  Future<String> loginUsuario(String email, String senha) async {
     String mensagemErro = '';
     _loading.value = true;
 
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: senha);
     } on FirebaseAuthException catch (error) {
-      if (error.code == 'user-not-found') {
+      if (error.code == 'user-disabled') {
+        mensagemErro = 'Usuário desabilitado. Contate o administrador.';
+      } else if (error.code == 'user-not-found') {
         mensagemErro = 'Email não encontrado. Cadastre-se!';
       } else if (error.code == 'wrong-password') {
         mensagemErro = 'Senha incorreta. Tente novamente!';
+      } else if (error.code == 'invalid-credential') {
+        ///Caso a proteção contra enumeração de e-mails esteja ativada
+        ///Firebase -> Authentication -> Settings -> Ações do usuário
+        mensagemErro = 'Email ou senha incorreto(s). Tente novamente!';
+      } else {
+        mensagemErro = 'Ops! Aconteceu algum erro inesperado.';
       }
+    }
+    _loading.value = false;
+    return mensagemErro;
+  }
+
+  ///Método para efetuar o logout do usuário no firebase
+  Future<String> logoutUsuario() async {
+    String mensagemErro = '';
+    _loading.value = true;
+
+    try {
+      await _auth.signOut();
+    } on FirebaseAuthException catch (_) {
+      mensagemErro = 'Ops! Aconteceu algum erro inesperado.';
     }
     _loading.value = false;
     return mensagemErro;
