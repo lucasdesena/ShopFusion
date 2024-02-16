@@ -1,7 +1,13 @@
 import 'package:get/get.dart';
 import 'package:shop_fusion/views/pages/auth/cadastro_page.dart';
 import 'package:shop_fusion/views/pages/auth/login_page.dart';
-import 'package:shop_fusion/views/pages/auth/map_page.dart';
+import 'package:shop_fusion/views/pages/carrinho_page.dart';
+import 'package:shop_fusion/views/pages/categoria_page.dart';
+import 'package:shop_fusion/views/pages/favorito_page.dart';
+import 'package:shop_fusion/views/pages/home_page.dart';
+import 'package:shop_fusion/views/pages/main_page.dart';
+import 'package:shop_fusion/views/pages/map_page.dart';
+import 'package:shop_fusion/views/pages/perfil_page.dart';
 
 abstract class Pages {
   static final pages = <GetPage>[
@@ -17,6 +23,14 @@ abstract class Pages {
       page: () => const MapPage(),
       name: Routes.mapRoute,
     ),
+    GetPage(
+      page: () => const MainPage(),
+      name: Routes.mainRoute,
+    ),
+    GetPage(
+      page: () => const HomePage(),
+      name: Routes.homeRoute,
+    ),
   ];
 }
 
@@ -24,4 +38,6 @@ abstract class Routes {
   static const String loginRoute = '/login';
   static const String cadastroRoute = '/cadastro';
   static const String mapRoute = '/map';
+  static const String mainRoute = '/main';
+  static const String homeRoute = '/home';
 }

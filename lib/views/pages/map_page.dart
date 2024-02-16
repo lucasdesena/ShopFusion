@@ -79,8 +79,8 @@ class _MapPageState extends State<MapPage> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
-                      onPressed: () async {
-                        await logout();
+                      onPressed: () {
+                        Get.offAllNamed('/main');
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
