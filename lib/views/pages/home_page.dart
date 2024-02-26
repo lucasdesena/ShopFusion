@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_fusion/views/pages/shared/box_banner.dart';
 import 'package:shop_fusion/views/pages/shared/box_location.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,10 @@ class _HomePageState extends State<HomePage> {
     return const Column(
       children: [
         BoxLocation(),
+        SizedBox(
+          height: 10,
+        ),
+        BoxBanner(),
       ],
     );
   }
