@@ -30,9 +30,9 @@ class AuthController extends GetxController {
   }
 
   ///Método para fazer o upload da imagem para o Storage do firebase
-  _carregarImagemStorage(Uint8List? imagem) async {
+  Future<String> _carregarImagemStorage(Uint8List? imagem) async {
     Reference ref =
-        _storage.ref().child('imagemPrefil').child(_auth.currentUser!.uid);
+        _storage.ref().child('imagem_perfil').child(_auth.currentUser!.uid);
 
     UploadTask uploadTask = ref.putData(imagem!);
 
@@ -64,7 +64,7 @@ class AuthController extends GetxController {
           .doc(userCredential.user!.uid)
           .set({
         'nome': nome,
-        'imagemPerfil': downloadURL,
+        'imagem_perfil': downloadURL,
         'email': email,
         'uid': userCredential.user!.uid,
       });

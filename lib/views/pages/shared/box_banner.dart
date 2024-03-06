@@ -42,7 +42,7 @@ class _BoxBannerState extends State<BoxBanner> {
               builder: (context) {
                 return Image.network(
                   e,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 );
               },
             ),
