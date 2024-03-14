@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:shop_fusion/views/pages/auth/cadastro_page.dart';
 import 'package:shop_fusion/views/pages/auth/login_page.dart';
-import 'package:shop_fusion/views/pages/home_page.dart';
+import 'package:shop_fusion/views/pages/interior_pages/categoria_produtos.dart';
+import 'package:shop_fusion/views/pages/principal_page.dart';
 import 'package:shop_fusion/views/pages/main_page.dart';
-import 'package:shop_fusion/views/pages/map_page.dart';
+import 'package:shop_fusion/views/pages/mapa_page.dart';
 
 abstract class Pages {
   static final pages = <GetPage>[
@@ -16,8 +17,8 @@ abstract class Pages {
       name: Routes.cadastroRoute,
     ),
     GetPage(
-      page: () => const MapPage(),
-      name: Routes.mapRoute,
+      page: () => const MapaPage(),
+      name: Routes.mapaRoute,
     ),
     GetPage(
       page: () => const MainPage(),
@@ -25,7 +26,11 @@ abstract class Pages {
     ),
     GetPage(
       page: () => const HomePage(),
-      name: Routes.homeRoute,
+      name: Routes.principalRoute,
+    ),
+    GetPage(
+      page: () => const CategoriaProdutos(),
+      name: Routes.categoriaProdutosRoute,
     ),
   ];
 }
@@ -33,7 +38,8 @@ abstract class Pages {
 abstract class Routes {
   static const String loginRoute = '/login';
   static const String cadastroRoute = '/cadastro';
-  static const String mapRoute = '/map';
+  static const String mapaRoute = '/map';
   static const String mainRoute = '/main';
-  static const String homeRoute = '/home';
+  static const String principalRoute = '/home';
+  static const String categoriaProdutosRoute = '/categoriaProdutos';
 }

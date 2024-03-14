@@ -8,14 +8,14 @@ import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
 
-class MapPage extends StatefulWidget {
-  const MapPage({super.key});
+class MapaPage extends StatefulWidget {
+  const MapaPage({super.key});
 
   @override
-  State<MapPage> createState() => _MapPageState();
+  State<MapaPage> createState() => _MapaPageState();
 }
 
-class _MapPageState extends State<MapPage> {
+class _MapaPageState extends State<MapaPage> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_fusion/views/pages/carrinho_page.dart';
 import 'package:shop_fusion/views/pages/categoria_page.dart';
 import 'package:shop_fusion/views/pages/favorito_page.dart';
-import 'package:shop_fusion/views/pages/home_page.dart';
+import 'package:shop_fusion/views/pages/principal_page.dart';
 import 'package:shop_fusion/views/pages/perfil_page.dart';
 
 class MainPage extends StatefulWidget {
