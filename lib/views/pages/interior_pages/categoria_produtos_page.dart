@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class CategoriaProdutos extends StatefulWidget {
-  const CategoriaProdutos({super.key});
+class CategoriaProdutosPage extends StatefulWidget {
+  const CategoriaProdutosPage({super.key});
 
   @override
-  State<CategoriaProdutos> createState() => _CategoriaProdutosState();
+  State<CategoriaProdutosPage> createState() => _CategoriaProdutosPageState();
 }
 
-class _CategoriaProdutosState extends State<CategoriaProdutos> {
+class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
   late dynamic categoria;
   late String nomeCategoria;
 
