@@ -84,7 +84,7 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                            produto['imagens_url'][0],
+                            produto['imagens_produto'][0],
                           ),
                         ),
                       ),

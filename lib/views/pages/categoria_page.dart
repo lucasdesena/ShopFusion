@@ -72,7 +72,22 @@ class CategoriaPage extends StatelessWidget {
                           categoria['imagem'],
                           width: 80,
                           height: 80,
+                          fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+
+                            return Center(
+                              child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          },
                         ),
+                        const SizedBox(height: 5),
                         Text(
                           categoria['nome_categoria'],
                           style: const TextStyle(

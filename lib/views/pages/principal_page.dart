@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:shop_fusion/views/pages/shared/box_banner.dart';
 import 'package:shop_fusion/views/pages/shared/box_categoria_text.dart';
 import 'package:shop_fusion/views/pages/shared/box_location.dart';
+import 'package:shop_fusion/views/pages/shared/box_produto_masculino.dart';
+import 'package:shop_fusion/views/pages/shared/box_produtos_principal.dart';
+import 'package:shop_fusion/views/pages/shared/box_reutilizar_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +24,12 @@ class _HomePageState extends State<HomePage> {
         BoxBanner(),
         SizedBox(height: 10),
         BoxCategoriaText(),
+        SizedBox(height: 10),
+        BoxProdutosPrincipal(),
+        SizedBox(height: 10),
+        BoxReutilizarText(title: 'Produtos Masculinos'),
+        SizedBox(height: 10),
+        BoxProdutoMasculino(),
       ],
     );
   }
