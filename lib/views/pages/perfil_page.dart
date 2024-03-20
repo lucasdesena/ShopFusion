@@ -67,7 +67,27 @@ class _PerfilPageState extends State<PerfilPage> {
                   ),
                   CircleAvatar(
                     radius: 65,
-                    backgroundImage: NetworkImage(data['imagem_perfil']),
+                    child: Container(
+                      clipBehavior: Clip.hardEdge,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.network(
+                        data['imagem_perfil'],
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

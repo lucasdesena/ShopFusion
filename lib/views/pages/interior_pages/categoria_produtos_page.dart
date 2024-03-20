@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoriaProdutosPage extends StatefulWidget {
   const CategoriaProdutosPage({super.key});
@@ -15,13 +16,10 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
   @override
   Widget build(BuildContext context) {
     ///Pegando argumentos
-    dynamic args = ModalRoute.of(context)!.settings.arguments;
-
-    ///Pegando a coleção "categoria"
-    categoria = args['categoria'];
+    final dynamic args = Get.arguments;
 
     ///Pegando o campo "nome_categoria"
-    nomeCategoria = categoria['nome_categoria'];
+    nomeCategoria = args['nome_categoria'];
 
     final Stream<QuerySnapshot> produtosStream = FirebaseFirestore.instance
         .collection('produtos')
@@ -77,16 +75,24 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
                 elevation: 3,
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 170,
                       width: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            produto['imagens_produto'][0],
-                          ),
-                        ),
+                      child: Image.network(
+                        produto['imagens_produto'][0],
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
                       ),
                     ),
                     Padding(

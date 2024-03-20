@@ -51,7 +51,7 @@ class CategoriaPage extends StatelessWidget {
                     Get.toNamed('/categoriaProdutos',
 
                         ///Passando argumento na rota
-                        arguments: {'categoria': categoria});
+                        arguments: categoria);
                   },
                   child: Container(
                     decoration: BoxDecoration(
