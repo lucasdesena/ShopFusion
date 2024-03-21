@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
@@ -25,7 +26,7 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
-    runApp(const MyApp());
+    runApp(const ProviderScope(child: MyApp()));
   });
 }
 

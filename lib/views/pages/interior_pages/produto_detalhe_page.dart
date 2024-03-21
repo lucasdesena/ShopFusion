@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/provider/carrinho_provider.dart';
 
-class ProdutoDetalhePage extends StatefulWidget {
+class ProdutoDetalhePage extends ConsumerStatefulWidget {
   const ProdutoDetalhePage({super.key});
 
   @override
-  State<ProdutoDetalhePage> createState() => _ProdutoDetalhePageState();
+  ConsumerState<ProdutoDetalhePage> createState() => _ProdutoDetalhePageState();
 }
 
-class _ProdutoDetalhePageState extends State<ProdutoDetalhePage> {
+class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
   int _imagemIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,11 @@ class _ProdutoDetalhePageState extends State<ProdutoDetalhePage> {
 
     ///Pegando parametros
     final dynamic parameters = Get.parameters;
+
+    ///Pegando provider
+    final providerCarrinho = ref.read(carrinhoProvider.notifier);
+    final item = ref.watch(carrinhoProvider);
+    final isInCarrinho = item.containsKey(args['id_produto']);
 
     return Scaffold(
       appBar: AppBar(
@@ -218,19 +225,35 @@ class _ProdutoDetalhePageState extends State<ProdutoDetalhePage> {
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepPurple.shade900,
-                    padding: const EdgeInsets.fromLTRB(6, 10, 6, 10),
+                    padding: const EdgeInsets.all(6),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: isInCarrinho
+                      ? null
+                      : () {
+                          providerCarrinho.addProdutoNoCarrinho(
+                            args['nome_produto'],
+                            args['id_produto'],
+                            args['imagens_produto'],
+                            args['preço_produto'],
+                            args['id_vendedor'],
+                            'xl',
+                            1,
+                            args['quantidade_produto'],
+                          );
+
+                          debugPrint(providerCarrinho
+                              .getCarrinhoItens.values.first.nomeProduto);
+                        },
                   icon: const Icon(
                     Icons.shopping_cart,
                     color: Colors.white,
                   ),
-                  label: const Text(
-                    'ADICIONAR',
-                    style: TextStyle(
+                  label: Text(
+                    isInCarrinho ? 'NO CARRINHO' : 'ADICIONAR',
+                    style: const TextStyle(
                       fontSize: 17,
                       color: Colors.white,
                       letterSpacing: 5,
