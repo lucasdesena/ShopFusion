@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
+import 'package:shop_fusion/provider/tamanho_provider.dart';
 
 class ProdutoDetalhePage extends ConsumerStatefulWidget {
   const ProdutoDetalhePage({super.key});
@@ -23,8 +24,11 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
 
     ///Pegando provider
     final providerCarrinho = ref.read(carrinhoProvider.notifier);
+
     final item = ref.watch(carrinhoProvider);
     final isInCarrinho = item.containsKey(args['id_produto']);
+
+    final tamanhoSelecionado = ref.watch(tamanhoProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -156,7 +160,15 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  final tamanhoSelecionado =
+                                      args['medidas'][index];
+
+                                  ref
+                                      .read(tamanhoProvider.notifier)
+                                      .setTamanhoSelecionado(
+                                          tamanhoSelecionado);
+                                },
                                 child: Text(args['medidas'][index]),
                               ),
                             );
@@ -239,7 +251,7 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                             args['imagens_produto'],
                             args['preço_produto'],
                             args['id_vendedor'],
-                            'xl',
+                            tamanhoSelecionado,
                             1,
                             args['quantidade_produto'],
                           );

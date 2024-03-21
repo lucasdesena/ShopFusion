@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
+import 'package:shop_fusion/provider/favorito_provider.dart';
 
-class BoxProdutoModel extends StatelessWidget {
+class BoxProdutoModel extends ConsumerStatefulWidget {
   final dynamic produto;
   final String tag;
   const BoxProdutoModel({super.key, required this.produto, required this.tag});
 
   @override
+  ConsumerState<BoxProdutoModel> createState() => _BoxProdutoModelState();
+}
+
+class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
+  @override
   Widget build(BuildContext context) {
+    final providerFavorito = ref.read(favoritoProvider.notifier);
+    ref.watch(favoritoProvider);
+
     return GestureDetector(
       onTap: () {
         Get.toNamed(
           Routes.produtoDetalheRoute,
-          arguments: produto,
-          parameters: {'tag': tag},
+          arguments: widget.produto,
+          parameters: {'tag': widget.tag},
         );
       },
       child: Stack(
@@ -46,9 +56,10 @@ class BoxProdutoModel extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Hero(
-                          tag: produto['imagens_produto'][0] + tag,
+                          tag:
+                              widget.produto['imagens_produto'][0] + widget.tag,
                           child: Image.network(
-                            produto['imagens_produto'][0],
+                            widget.produto['imagens_produto'][0],
                             fit: BoxFit.cover,
                             loadingBuilder: (context, child, loadingProgress) {
                               if (loadingProgress == null) return child;
@@ -74,7 +85,7 @@ class BoxProdutoModel extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            produto['nome_produto'],
+                            widget.produto['nome_produto'],
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -87,7 +98,7 @@ class BoxProdutoModel extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            'R\$ ${produto['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
+                            'R\$ ${widget.produto['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -102,7 +113,34 @@ class BoxProdutoModel extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            right: 15,
+            top: 15,
+            child: IconButton(
+              onPressed: () {
+                providerFavorito.addProdutoNosFavoritos(
+                  widget.produto['nome_produto'],
+                  widget.produto['id_produto'],
+                  widget.produto['imagens_produto'],
+                  widget.produto['preço_produto'],
+                  widget.produto['id_vendedor'],
+                  1,
+                  widget.produto['quantidade_produto'],
+                );
+              },
+              icon: providerFavorito.getFavoritoItem
+                      .containsKey(widget.produto['id_produto'])
+                  ? const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    )
+                  : const Icon(
+                      Icons.favorite_border,
+                      color: Colors.red,
+                    ),
+            ),
+          ),
         ],
       ),
     );
