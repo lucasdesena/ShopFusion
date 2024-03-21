@@ -43,7 +43,10 @@ class BoxProdutoMasculino extends StatelessWidget {
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               final produto = snapshot.data!.docs[index];
-              return BoxProdutoModel(produto: produto);
+              return BoxProdutoModel(
+                produto: produto,
+                tag: 'masculino',
+              );
             },
           ),
         );

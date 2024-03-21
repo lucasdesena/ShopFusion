@@ -4,13 +4,18 @@ import 'package:shop_fusion/config/pages_routes.dart';
 
 class BoxProdutoModel extends StatelessWidget {
   final dynamic produto;
-  const BoxProdutoModel({super.key, required this.produto});
+  final String tag;
+  const BoxProdutoModel({super.key, required this.produto, required this.tag});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.produtoDetalheRoute, arguments: produto);
+        Get.toNamed(
+          Routes.produtoDetalheRoute,
+          arguments: produto,
+          parameters: {'tag': tag},
+        );
       },
       child: Stack(
         children: [
@@ -40,22 +45,25 @@ class BoxProdutoModel extends StatelessWidget {
                       width: 60,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          produto['imagens_produto'][0],
-                          fit: BoxFit.cover,
-                          loadingBuilder: (context, child, loadingProgress) {
-                            if (loadingProgress == null) return child;
+                        child: Hero(
+                          tag: produto['imagens_produto'][0] + tag,
+                          child: Image.network(
+                            produto['imagens_produto'][0],
+                            fit: BoxFit.cover,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
 
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
-                                    : null,
-                              ),
-                            );
-                          },
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
