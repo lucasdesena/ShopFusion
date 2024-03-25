@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
 import 'package:shop_fusion/provider/tamanho_provider.dart';
+import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class ProdutoDetalhePage extends ConsumerStatefulWidget {
   const ProdutoDetalhePage({super.key});
@@ -54,7 +55,7 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                     width: MediaQuery.of(context).size.width,
                     child: Hero(
                       tag: args['imagens_produto'][0] + parameters['tag'],
-                      child: Image.network(
+                      child: BoxImageNetwork(
                         args['imagens_produto'][_imagemIndex],
                         fit: BoxFit.cover,
                       ),
@@ -86,8 +87,8 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                                   color: Colors.deepPurple.shade900,
                                 ),
                               ),
-                              child:
-                                  Image.network(args['imagens_produto'][index]),
+                              child: BoxImageNetwork(
+                                  args['imagens_produto'][index]),
                             ),
                           ),
                         );
@@ -186,23 +187,10 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child: Image.network(
+                        child: BoxImageNetwork(
                           args['imagem_loja'],
                           width: 60,
                           fit: BoxFit.cover,
-                          loadingBuilder: (context, child, loadingProgress) {
-                            if (loadingProgress == null) return child;
-
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
-                                    : null,
-                              ),
-                            );
-                          },
                         ),
                       ),
                     ),

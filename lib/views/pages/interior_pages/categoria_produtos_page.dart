@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class CategoriaProdutosPage extends StatefulWidget {
   const CategoriaProdutosPage({super.key});
@@ -78,21 +79,9 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
                     SizedBox(
                       height: 170,
                       width: 200,
-                      child: Image.network(
+                      child: BoxImageNetwork(
                         produto['imagens_produto'][0],
                         fit: BoxFit.cover,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
-                            ),
-                          );
-                        },
                       ),
                     ),
                     Padding(

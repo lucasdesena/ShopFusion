@@ -8,7 +8,7 @@ final favoritoProvider =
 class FavoritoNotifier extends StateNotifier<Map<String, FavoritoModel>> {
   FavoritoNotifier() : super({});
 
-  void addProdutoNosFavoritos(
+  void adicionarProdutoFavoritos(
     String nomeProduto,
     String idProduto,
     List imagensProduto,
@@ -27,7 +27,21 @@ class FavoritoNotifier extends StateNotifier<Map<String, FavoritoModel>> {
       quantidadeProduto: quantidadeProduto,
     );
 
-    ///notifica que o estado mudou
+    ///Notifica que o estado mudou
+    state = {...state};
+  }
+
+  void limparProdutosFavoritos() {
+    state.clear();
+
+    ///Notifica que o estado mudou
+    state = {...state};
+  }
+
+  void removerProduto(String idProduto) {
+    state.remove(idProduto);
+
+    ///Notifica que o estado mudou
     state = {...state};
   }
 

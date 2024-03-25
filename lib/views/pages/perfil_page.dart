@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
+import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class PerfilPage extends StatefulWidget {
   const PerfilPage({super.key});
@@ -72,21 +73,7 @@ class _PerfilPageState extends State<PerfilPage> {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
-                      child: Image.network(
-                        data['imagem_perfil'],
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
-                            ),
-                          );
-                        },
-                      ),
+                      child: BoxImageNetwork(data['imagem_perfil']),
                     ),
                   ),
                   Padding(

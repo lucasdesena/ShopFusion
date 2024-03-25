@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/provider/favorito_provider.dart';
+import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class BoxProdutoModel extends ConsumerStatefulWidget {
   final dynamic produto;
@@ -16,14 +17,20 @@ class BoxProdutoModel extends ConsumerStatefulWidget {
 class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
   @override
   Widget build(BuildContext context) {
+    ///Pegando provider
     final providerFavorito = ref.read(favoritoProvider.notifier);
+
     ref.watch(favoritoProvider);
 
     return GestureDetector(
       onTap: () {
         Get.toNamed(
           Routes.produtoDetalheRoute,
+
+          ///Passando argumento na rota
           arguments: widget.produto,
+
+          ///Passando parametro na rota
           parameters: {'tag': widget.tag},
         );
       },
@@ -58,22 +65,9 @@ class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
                         child: Hero(
                           tag:
                               widget.produto['imagens_produto'][0] + widget.tag,
-                          child: Image.network(
+                          child: BoxImageNetwork(
                             widget.produto['imagens_produto'][0],
                             fit: BoxFit.cover,
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadingProgress.expectedTotalBytes !=
-                                          null
-                                      ? loadingProgress.cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes!
-                                      : null,
-                                ),
-                              );
-                            },
                           ),
                         ),
                       ),
@@ -119,7 +113,7 @@ class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
             top: 15,
             child: IconButton(
               onPressed: () {
-                providerFavorito.addProdutoNosFavoritos(
+                providerFavorito.adicionarProdutoFavoritos(
                   widget.produto['nome_produto'],
                   widget.produto['id_produto'],
                   widget.produto['imagens_produto'],

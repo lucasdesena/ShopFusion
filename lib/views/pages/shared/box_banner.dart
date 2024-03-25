@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class BoxBanner extends StatefulWidget {
   const BoxBanner({super.key});
@@ -35,26 +36,15 @@ class _BoxBannerState extends State<BoxBanner> {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-        items: _cartazes.map((e) {
+        items: _cartazes.map((cartaz) {
           return SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Builder(
               builder: (context) {
-                return Image.network(
-                  e,
+                return BoxImageNetwork(
+                  cartaz,
                   fit: BoxFit.fill,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-
-                    return Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes!
-                            : null,
-                      ),
-                    );
-                  },
+                  isBanner: true,
                 );
               },
             ),
