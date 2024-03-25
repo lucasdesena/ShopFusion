@@ -58,7 +58,7 @@ class UtilsServices {
     Get.snackbar(
       '',
       '',
-      titleText: Container(),
+      titleText: const SizedBox(),
       messageText: Center(
         child: Text(
           message,

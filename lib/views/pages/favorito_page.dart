@@ -16,7 +16,7 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
     ///Pegando provider
     final providerFavorito = ref.read(favoritoProvider.notifier);
 
-    final listItens = ref.watch(favoritoProvider);
+    final listaDesejos = ref.watch(favoritoProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -29,21 +29,21 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
           ),
         ),
         actions: [
-          listItens.isNotEmpty
+          listaDesejos.isNotEmpty
               ? IconButton(
                   onPressed: () {
                     providerFavorito.limparProdutosFavoritos();
                   },
                   icon: const Icon(Icons.delete),
                 )
-              : Container(),
+              : const SizedBox(),
         ],
       ),
-      body: listItens.isNotEmpty
+      body: listaDesejos.isNotEmpty
           ? ListView.builder(
-              itemCount: listItens.length,
+              itemCount: listaDesejos.length,
               itemBuilder: (context, index) {
-                final lista = listItens.values.toList()[index];
+                final lista = listaDesejos.values.toList()[index];
 
                 return Card(
                   child: SizedBox(
@@ -110,7 +110,7 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
                     ),
                   ),
                   Text(
-                    'Nenhum item  adicionado a sua lista de desejos. \nVocê pode adicionar pela página princpal',
+                    'Nenhum item adicionado a sua lista de desejos.\nVocê pode adicionar pela página princpal.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

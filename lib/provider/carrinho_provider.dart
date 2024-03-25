@@ -49,5 +49,46 @@ class CarrinhoNotifier extends StateNotifier<Map<String, CarrinhoModel>> {
     }
   }
 
+  void aumentarQtdItem(String idProduto) {
+    if (state.containsKey(idProduto)) {
+      state[idProduto]!.quantidade++;
+
+      ///Notifica que o estado mudou
+      state = {...state};
+    }
+  }
+
+  void diminuirQtdItem(String idProduto) {
+    if (state.containsKey(idProduto) && state[idProduto]!.quantidade > 0) {
+      state[idProduto]!.quantidade--;
+
+      ///Notifica que o estado mudou
+      state = {...state};
+    }
+  }
+
+  void limparProdutosCarrinho() {
+    state.clear();
+
+    ///Notifica que o estado mudou
+    state = {...state};
+  }
+
+  void removerProduto(String idProduto) {
+    state.remove(idProduto);
+
+    ///Notifica que o estado mudou
+    state = {...state};
+  }
+
+  double calcularValortotal() {
+    double valortotal = 0.0;
+    state.forEach((idProduto, carrinho) {
+      valortotal += carrinho.quantidade * carrinho.preco;
+    });
+
+    return valortotal;
+  }
+
   Map<String, CarrinhoModel> get getCarrinhoItens => state;
 }
