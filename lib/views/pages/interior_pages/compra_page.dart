@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/compra_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
@@ -109,7 +110,9 @@ class _CompraPageState extends ConsumerState<CompraPage> {
                           tipo: TipoMensagem.erro,
                         );
                       } else {
-                        Get.back(result: true);
+                        ///Também da para usar o "Get.close(2);" sendo "2" o número de rotas que você quer fechar
+                        ///Sempre do topo da pilha para a base ou seja a última rota aberta é a primeira a ser fechada
+                        Get.until((_) => Get.currentRoute == Routes.mainRoute);
                         utils.showToast(
                           message: 'Pedido realizado com sucesso',
                           tipo: TipoMensagem.sucesso,

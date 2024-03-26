@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_fusion/views/pages/carrinho_page.dart';
-import 'package:shop_fusion/views/pages/categoria_page.dart';
-import 'package:shop_fusion/views/pages/favorito_page.dart';
-import 'package:shop_fusion/views/pages/principal_page.dart';
-import 'package:shop_fusion/views/pages/perfil_page.dart';
+import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,15 +11,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int pageIndex = 0;
-
-  final List<Widget> _pages = [
-    const HomePage(),
-    const CategoriaPage(),
-    const CarrinhoPage(),
-    const FavoritoPage(),
-    const PerfilPage(),
-  ];
+  final RxInt currentPageIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +19,11 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
-            pageIndex = value;
+            currentPageIndex.value = value;
           });
         },
         selectedItemColor: Colors.deepPurple,
-        currentIndex: pageIndex,
+        currentIndex: currentPageIndex.value,
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
@@ -61,7 +50,32 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      body: _pages[pageIndex],
+      body: Obx(() {
+        switch (currentPageIndex.value) {
+          case 0:
+            return Pages.pages
+                .firstWhere((page) => page.name == Routes.principalRoute)
+                .page();
+          case 1:
+            return Pages.pages
+                .firstWhere((page) => page.name == Routes.categoriaRoute)
+                .page();
+          case 2:
+            return Pages.pages
+                .firstWhere((page) => page.name == Routes.carrinhoRoute)
+                .page();
+          case 3:
+            return Pages.pages
+                .firstWhere((page) => page.name == Routes.favoritoRoute)
+                .page();
+          case 4:
+            return Pages.pages
+                .firstWhere((page) => page.name == Routes.perfilRoute)
+                .page();
+          default:
+            return Container();
+        }
+      }),
     );
   }
 }

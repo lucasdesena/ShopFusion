@@ -3,10 +3,14 @@ import 'package:shop_fusion/views/pages/auth/boas_vindas_pages/boas_vindas_cadas
 import 'package:shop_fusion/views/pages/auth/boas_vindas_pages/boas_vindas_login_page.dart';
 import 'package:shop_fusion/views/pages/auth/cliente_cadastro_page.dart';
 import 'package:shop_fusion/views/pages/auth/cliente_login_page.dart';
+import 'package:shop_fusion/views/pages/carrinho_page.dart';
 import 'package:shop_fusion/views/pages/categoria_page.dart';
+import 'package:shop_fusion/views/pages/favorito_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/categoria_produtos_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/compra_page.dart';
+import 'package:shop_fusion/views/pages/interior_pages/pagamento_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/produto_detalhe_page.dart';
+import 'package:shop_fusion/views/pages/perfil_page.dart';
 import 'package:shop_fusion/views/pages/principal_page.dart';
 import 'package:shop_fusion/views/pages/main_page.dart';
 import 'package:shop_fusion/views/pages/mapa_page.dart';
@@ -46,6 +50,18 @@ abstract class Pages {
       name: Routes.categoriaRoute,
     ),
     GetPage(
+      page: () => const CarrinhoPage(),
+      name: Routes.carrinhoRoute,
+    ),
+    GetPage(
+      page: () => const FavoritoPage(),
+      name: Routes.favoritoRoute,
+    ),
+    GetPage(
+      page: () => const PerfilPage(),
+      name: Routes.perfilRoute,
+    ),
+    GetPage(
       page: () => const CategoriaProdutosPage(),
       name: Routes.categoriaProdutosRoute,
     ),
@@ -56,6 +72,10 @@ abstract class Pages {
     GetPage(
       page: () => const CompraPage(),
       name: Routes.comprarRoute,
+    ),
+    GetPage(
+      page: () => const PagamentoPage(),
+      name: Routes.pagamentoRoute,
     ),
   ];
 }
@@ -69,7 +89,11 @@ abstract class Routes {
   static const String mainRoute = '/main';
   static const String principalRoute = '/home';
   static const String categoriaRoute = '/categoria';
+  static const String carrinhoRoute = '/carrinho';
+  static const String favoritoRoute = '/favorito';
+  static const String perfilRoute = '/perfil';
   static const String categoriaProdutosRoute = '/categoriaProdutos';
   static const String produtoDetalheRoute = '/produtoDetalhe';
   static const String comprarRoute = '/comprar';
+  static const String pagamentoRoute = '/pagamento';
 }

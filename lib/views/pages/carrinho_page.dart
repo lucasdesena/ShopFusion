@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
+import 'package:shop_fusion/controllers/compra_controller.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
 import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
@@ -14,6 +15,8 @@ class CarrinhoPage extends ConsumerStatefulWidget {
 }
 
 class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
+  final _compraController = Get.find<CompraController>();
+
   @override
   Widget build(BuildContext context) {
     final providerCarrinho = ref.read(carrinhoProvider.notifier);
@@ -208,8 +211,8 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Get.toNamed(Routes.comprarRoute)?.then((value) {
-                          if (value != null) {
+                        Get.toNamed(Routes.pagamentoRoute)?.then((_) {
+                          if (_compraController.pedidoRealizado) {
                             providerCarrinho.limparProdutosCarrinho();
                           }
                         });

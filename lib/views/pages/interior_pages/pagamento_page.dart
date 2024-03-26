@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 
 class PagamentoPage extends StatefulWidget {
   const PagamentoPage({super.key});
@@ -8,27 +10,52 @@ class PagamentoPage extends StatefulWidget {
 }
 
 class _PagamentoPageState extends State<PagamentoPage> {
+  bool _pagarNaEntrega = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Opção de Pagamento',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          'Opções de Pagamento',
+          style: TextStyle(fontWeight: FontWeight.w400, letterSpacing: 4),
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text(
+            const Text(
               'Selecione o Método de Pagamento',
               style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                fontWeight: FontWeight.w300,
+                color: Colors.black87,
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Pagar na entrega',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                Switch(
+                  value: _pagarNaEntrega,
+                  onChanged: (value) {
+                    setState(() {
+                      _pagarNaEntrega = value;
+                    });
+
+                    if (_pagarNaEntrega) {
+                      Get.toNamed(Routes.comprarRoute);
+                    }
+                  },
+                ),
+              ],
             ),
           ],
         ),

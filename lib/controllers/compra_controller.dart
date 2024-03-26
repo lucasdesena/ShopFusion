@@ -11,6 +11,10 @@ class CompraController extends GetxController {
 
   bool get loading => _loading.value;
 
+  final RxBool _pedidoRealizado = false.obs;
+
+  bool get pedidoRealizado => _pedidoRealizado.value;
+
   Future<String> finalizarcompra(
       Map<String, CarrinhoModel> itensCarrinho) async {
     String mensagemErro = '';
@@ -46,6 +50,8 @@ class CompraController extends GetxController {
           'quantidade_disponivel': item.quantidadeProduto,
         });
       });
+
+      _pedidoRealizado.value = true;
     } catch (error) {
       mensagemErro = 'Houve um erro ao tentar finalizar a compra!';
     }
