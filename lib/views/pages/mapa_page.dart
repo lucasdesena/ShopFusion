@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
+import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 
 class MapaPage extends StatefulWidget {
   const MapaPage({super.key});
@@ -72,12 +73,8 @@ class _MapaPageState extends State<MapaPage> {
                   Padding(
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        padding: const EdgeInsets.only(top: 12, bottom: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                      style: BoxElevatedButtonStyle.style(
+                        const EdgeInsets.only(top: 12, bottom: 12),
                       ),
                       onPressed: () {
                         Get.offAllNamed('/main');

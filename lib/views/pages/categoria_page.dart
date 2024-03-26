@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class CategoriaPage extends StatelessWidget {
@@ -49,7 +50,7 @@ class CategoriaPage extends StatelessWidget {
                 final categoria = snapshot.data!.docs[index];
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed('/categoriaProdutos',
+                    Get.toNamed(Routes.categoriaProdutosRoute,
 
                         ///Passando argumento na rota
                         arguments: categoria);

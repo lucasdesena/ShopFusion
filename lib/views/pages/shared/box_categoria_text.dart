@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 
 class BoxCategoriaText extends StatefulWidget {
   const BoxCategoriaText({super.key});
@@ -72,7 +73,7 @@ class _BoxCategoriaTextState extends State<BoxCategoriaText> {
                     ),
                     IconButton(
                       onPressed: () {
-                        Get.toNamed('/categoria');
+                        Get.toNamed(Routes.categoriaRoute);
                       },
                       icon: const Icon(
                         Icons.arrow_forward_ios,

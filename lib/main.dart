@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
+import 'package:shop_fusion/controllers/compra_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +23,7 @@ void main() async {
   );
 
   Get.put(AuthController());
+  Get.put(CompraController());
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return GetMaterialApp(
       title: 'ShopFusion',
       debugShowCheckedModeBanner: false,
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       getPages: Pages.pages,
-      initialRoute: Routes.loginRoute,
+      initialRoute: Routes.boasVindasLoginRoute,
     );
   }
 }

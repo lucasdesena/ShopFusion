@@ -3,20 +3,22 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
 import 'package:shop_fusion/services/validators.dart';
+import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 import 'package:shop_fusion/views/pages/shared/box_text_field.dart';
 
-class CadastroPage extends StatefulWidget {
-  const CadastroPage({super.key});
+class ClienteCadastroPage extends StatefulWidget {
+  const ClienteCadastroPage({super.key});
 
   @override
-  State<CadastroPage> createState() => _CadastroPageState();
+  State<ClienteCadastroPage> createState() => _ClienteCadastroPageState();
 }
 
-class _CadastroPageState extends State<CadastroPage> {
+class _ClienteCadastroPageState extends State<ClienteCadastroPage> {
   final _authController = Get.find<AuthController>();
   final UtilsServices utils = UtilsServices();
 
@@ -108,7 +110,6 @@ class _CadastroPageState extends State<CadastroPage> {
                     label: 'Senha',
                     hintText: 'Insira a sua senha',
                     isSenha: true,
-                    
                     validator: passwordValidator,
                   ),
                   const SizedBox(
@@ -116,12 +117,8 @@ class _CadastroPageState extends State<CadastroPage> {
                   ),
                   Obx(() {
                     return ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        padding: const EdgeInsets.only(top: 12, bottom: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                      style: BoxElevatedButtonStyle.style(
+                        const EdgeInsets.only(top: 12, bottom: 12),
                       ),
                       onPressed: _authController.loading
                           ? null
@@ -148,7 +145,7 @@ class _CadastroPageState extends State<CadastroPage> {
                       onPressed: _authController.loading
                           ? null
                           : () {
-                              Get.back();
+                              Get.offAndToNamed(Routes.clienteLoginRoute);
                             },
                       child: const Text('Já possui uma conta? Faça o login.'),
                     );
@@ -194,7 +191,7 @@ class _CadastroPageState extends State<CadastroPage> {
               tipo: TipoMensagem.erro,
             );
           } else {
-            Get.back();
+            Get.offAndToNamed(Routes.clienteLoginRoute);
             utils.showToast(
               message: 'Cadastro realizado com sucesso',
               tipo: TipoMensagem.sucesso,

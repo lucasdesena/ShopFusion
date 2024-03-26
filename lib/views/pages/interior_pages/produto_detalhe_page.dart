@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
 import 'package:shop_fusion/provider/tamanho_provider.dart';
+import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class ProdutoDetalhePage extends ConsumerStatefulWidget {
@@ -223,12 +224,8 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
             Row(
               children: [
                 ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple.shade900,
-                    padding: const EdgeInsets.all(6),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
+                  style: BoxElevatedButtonStyle.style(
+                    const EdgeInsets.all(6),
                   ),
                   onPressed: isInCarrinho
                       ? null
@@ -243,9 +240,6 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                             1,
                             args['quantidade_produto'],
                           );
-
-                          debugPrint(providerCarrinho
-                              .getCarrinhoItens.values.first.nomeProduto);
                         },
                   icon: const Icon(
                     Icons.shopping_cart,
