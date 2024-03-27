@@ -3,7 +3,8 @@ import 'package:shop_fusion/models/carrinho_model.dart';
 
 final carrinhoProvider =
     StateNotifierProvider<CarrinhoNotifier, Map<String, CarrinhoModel>>(
-        (ref) => CarrinhoNotifier());
+  (ref) => CarrinhoNotifier(),
+);
 
 class CarrinhoNotifier extends StateNotifier<Map<String, CarrinhoModel>> {
   CarrinhoNotifier() : super({});

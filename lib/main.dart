@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
+import 'package:shop_fusion/controllers/categoria_controller.dart';
 import 'package:shop_fusion/controllers/compra_controller.dart';
 
 void main() async {
@@ -21,9 +22,6 @@ void main() async {
       storageBucket: dotenv.get('FirebaseStorageBucket'),
     ),
   );
-
-  Get.put(AuthController());
-  Get.put(CompraController());
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -48,6 +46,11 @@ class MyApp extends StatelessWidget {
       ),
       getPages: Pages.pages,
       initialRoute: Routes.boasVindasLoginRoute,
+      initialBinding: BindingsBuilder(() {
+        Get.put(AuthController());
+        Get.put(CompraController());
+        Get.put(CategoriaController());
+      }),
     );
   }
 }

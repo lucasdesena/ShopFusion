@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_fusion/views/pages/shared/box_banner.dart';
-import 'package:shop_fusion/views/pages/shared/box_categoria_text.dart';
+import 'package:shop_fusion/views/pages/shared/box_categoria.dart';
 import 'package:shop_fusion/views/pages/shared/box_location.dart';
 import 'package:shop_fusion/views/pages/shared/box_produto_feminino.dart';
 import 'package:shop_fusion/views/pages/shared/box_produto_masculino.dart';
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 10),
           BoxBanner(),
           SizedBox(height: 10),
-          BoxCategoriaText(),
+          BoxCategoria(),
           SizedBox(height: 10),
           BoxProdutosPrincipal(),
           SizedBox(height: 10),

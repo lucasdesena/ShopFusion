@@ -1,9 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final tamanhoProvider = StateNotifierProvider<TamanhoNotifier, String>(
-  (ref) {
-    return TamanhoNotifier();
-  },
+  (ref) => TamanhoNotifier(),
 );
 
 class TamanhoNotifier extends StateNotifier<String> {
@@ -11,5 +9,9 @@ class TamanhoNotifier extends StateNotifier<String> {
 
   void setTamanhoSelecionado(String tamanho) {
     state = tamanho;
+  }
+
+  void resetTamanhoSelecionado() {
+    state = '';
   }
 }

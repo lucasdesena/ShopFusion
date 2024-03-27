@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
 import 'package:shop_fusion/provider/tamanho_provider.dart';
+import 'package:shop_fusion/services/utils_services.dart';
 import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
@@ -15,7 +17,18 @@ class ProdutoDetalhePage extends ConsumerStatefulWidget {
 }
 
 class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
+  final UtilsServices utils = UtilsServices();
   int _imagemIndex = 0;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ///Limpando tamanho selecionado anteriormente
+      ref.read(tamanhoProvider.notifier).resetTamanhoSelecionado();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     ///Pegando argumentos
@@ -163,7 +176,7 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: OutlinedButton(
                                 onPressed: () {
-                                  final tamanhoSelecionado =
+                                  final String tamanhoSelecionado =
                                       args['medidas'][index];
 
                                   ref
@@ -230,16 +243,23 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                   onPressed: isInCarrinho
                       ? null
                       : () {
-                          providerCarrinho.addProdutoNoCarrinho(
-                            args['nome_produto'],
-                            args['id_produto'],
-                            args['imagens_produto'],
-                            args['preço_produto'],
-                            args['id_vendedor'],
-                            tamanhoSelecionado,
-                            1,
-                            args['quantidade_produto'],
-                          );
+                          if (tamanhoSelecionado.isNotEmpty) {
+                            providerCarrinho.addProdutoNoCarrinho(
+                              args['nome_produto'],
+                              args['id_produto'],
+                              args['imagens_produto'],
+                              args['preço_produto'],
+                              args['id_vendedor'],
+                              tamanhoSelecionado,
+                              1,
+                              args['quantidade_produto'],
+                            );
+                          } else {
+                            utils.showToast(
+                                message:
+                                    'Selecione uma variação do pedido antes de prosseguir',
+                                tipo: TipoMensagem.erro);
+                          }
                         },
                   icon: const Icon(
                     Icons.shopping_cart,
