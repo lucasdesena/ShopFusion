@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
@@ -15,7 +15,6 @@ class PerfilPage extends StatefulWidget {
 }
 
 class _PerfilPageState extends State<PerfilPage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final _authController = Get.find<AuthController>();
   final UtilsServices utils = UtilsServices();
 
@@ -46,7 +45,7 @@ class _PerfilPageState extends State<PerfilPage> {
         ],
       ),
       body: FutureBuilder<DocumentSnapshot>(
-        future: compradores.doc(_auth.currentUser!.uid).get(),
+        future: compradores.doc(_authController.uid).get(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
@@ -151,11 +150,14 @@ class _PerfilPageState extends State<PerfilPage> {
                       ),
                     ),
                   ),
-                  const ListTile(
-                    leading: Icon(
+                  ListTile(
+                    onTap: () {
+                      Get.toNamed(Routes.pedidoRoute);
+                    },
+                    leading: const Icon(
                       Icons.shopping_bag_outlined,
                     ),
-                    title: Text(
+                    title: const Text(
                       'Pedidos',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

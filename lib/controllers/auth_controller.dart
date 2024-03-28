@@ -15,6 +15,9 @@ class AuthController extends GetxController {
 
   bool get loading => _loading.value;
 
+  ///ID do usuário
+  String get uid => _auth.currentUser!.uid;
+
   ///Método para selecionar uma imagem da galeria para o perfil
   Future<({Uint8List? imagem, String? mensagemErro})> escolherImagemPerfil(
       ImageSource localImagem) async {
@@ -31,8 +34,7 @@ class AuthController extends GetxController {
 
   ///Método para fazer o upload da imagem para o Storage do firebase
   Future<String> _carregarImagemStorage(Uint8List? imagem) async {
-    Reference ref =
-        _storage.ref().child('imagem_perfil').child(_auth.currentUser!.uid);
+    Reference ref = _storage.ref().child('imagem_perfil').child(uid);
 
     UploadTask uploadTask = ref.putData(imagem!);
 

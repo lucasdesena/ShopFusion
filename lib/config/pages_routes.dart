@@ -9,6 +9,7 @@ import 'package:shop_fusion/views/pages/favorito_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/categoria_produtos_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/compra_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/pagamento_page.dart';
+import 'package:shop_fusion/views/pages/interior_pages/pedido_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/produto_detalhe_page.dart';
 import 'package:shop_fusion/views/pages/perfil_page.dart';
 import 'package:shop_fusion/views/pages/principal_page.dart';
@@ -77,6 +78,10 @@ abstract class Pages {
       page: () => const PagamentoPage(),
       name: Routes.pagamentoRoute,
     ),
+    GetPage(
+      page: () => const PedidoPage(),
+      name: Routes.pedidoRoute,
+    ),
   ];
 }
 
@@ -96,4 +101,5 @@ abstract class Routes {
   static const String produtoDetalheRoute = '/produtoDetalhe';
   static const String comprarRoute = '/comprar';
   static const String pagamentoRoute = '/pagamento';
+  static const String pedidoRoute = '/pedido';
 }

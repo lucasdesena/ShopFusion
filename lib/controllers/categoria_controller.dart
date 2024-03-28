@@ -9,11 +9,12 @@ class CategoriaController extends GetxController {
 
   @override
   void onInit() {
-    _pegarCategorias();
+    _obterCategorias();
     super.onInit();
   }
 
-  void _pegarCategorias() {
+  ///Método para pegar as categorias existentes no Firebase firestore
+  void _obterCategorias() {
     _firestore
         .collection('categorias')
         .snapshots()

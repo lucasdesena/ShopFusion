@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:shop_fusion/models/carrinho_model.dart';
 
 class CompraController extends GetxController {
@@ -48,6 +49,8 @@ class CompraController extends GetxController {
           'tamanho_produto': item.tamanhoProduto,
           'imagens_produto': item.imagensProduto,
           'quantidade_disponivel': item.quantidadeProduto,
+          'aceito': false,
+          'data_pedido': DateFormat('dd/MM/yyyy HH:mm').format(DateTime.now()),
         });
       });
 
