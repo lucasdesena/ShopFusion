@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/controllers/categoria_controller.dart';
+import 'package:shop_fusion/controllers/chat_controller.dart';
 import 'package:shop_fusion/controllers/compra_controller.dart';
 
 void main() async {
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         Get.put(AuthController());
         Get.put(CompraController());
         Get.put(CategoriaController());
+        Get.put(ChatController());
       }),
     );
   }

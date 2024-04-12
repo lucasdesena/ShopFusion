@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
+import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class CategoriaProdutosPage extends StatefulWidget {
@@ -14,11 +16,11 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
   late dynamic categoria;
   late String nomeCategoria;
 
+  ///Pegando argumentos
+  final dynamic args = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
-    ///Pegando argumentos
-    final dynamic args = Get.arguments;
-
     ///Pegando o campo "nome_categoria"
     nomeCategoria = args['nome_categoria'];
 
@@ -41,7 +43,7 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
         stream: produtosStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Algo deu errado');
+            return const BoxError();
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -72,39 +74,54 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
             ),
             itemBuilder: (context, index) {
               final produto = snapshot.data!.docs[index];
-              return Card(
-                elevation: 3,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 170,
-                      width: 200,
-                      child: BoxImageNetwork(
-                        produto['imagens_produto'][0],
-                        fit: BoxFit.cover,
+              return GestureDetector(
+                onTap: () => Get.toNamed(
+                  Routes.produtoDetalheRoute,
+
+                  ///Passando argumento na rota
+                  arguments: produto,
+
+                  ///Passando parametro na rota
+                  parameters: {'tag': args['nome_categoria']},
+                ),
+                child: Card(
+                  elevation: 3,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 170,
+                        width: 200,
+                        child: Hero(
+                          tag: produto['imagens_produto'][0] +
+                              args['nome_categoria'],
+                          child: BoxImageNetwork(
+                            produto['imagens_produto'][0],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        produto['nome_produto'],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          produto['nome_produto'],
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 4,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'R\$ ${produto['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 4,
+                          color: Colors.deepPurple,
                         ),
                       ),
-                    ),
-                    Text(
-                      'R\$ ${produto['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 4,
-                        color: Colors.deepPurple,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },

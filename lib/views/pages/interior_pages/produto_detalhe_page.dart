@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
 import 'package:shop_fusion/provider/tamanho_provider.dart';
@@ -20,6 +21,12 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
   final UtilsServices utils = UtilsServices();
   int _imagemIndex = 0;
 
+  ///Pegando argumentos
+  final dynamic args = Get.arguments;
+
+  ///Pegando parametros
+  final dynamic parameters = Get.parameters;
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -31,12 +38,6 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
 
   @override
   Widget build(BuildContext context) {
-    ///Pegando argumentos
-    final dynamic args = Get.arguments;
-
-    ///Pegando parametros
-    final dynamic parameters = Get.parameters;
-
     ///Pegando provider
     final providerCarrinho = ref.read(carrinhoProvider.notifier);
 
@@ -277,7 +278,14 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
               ],
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(
+                  Routes.chatRoute,
+
+                  ///Passando argumento na rota
+                  arguments: args,
+                );
+              },
               icon: const Icon(
                 Icons.chat_bubble_outline,
                 color: Colors.deepPurple,

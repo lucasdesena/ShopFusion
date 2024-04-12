@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
+import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class PedidoPage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _PedidoPageState extends State<PedidoPage> {
         stream: categoriasStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Algo deu errado');
+            return const BoxError();
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {

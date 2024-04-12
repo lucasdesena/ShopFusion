@@ -5,6 +5,7 @@ import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
+import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class PerfilPage extends StatefulWidget {
@@ -49,7 +50,7 @@ class _PerfilPageState extends State<PerfilPage> {
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text("Algo de errado aconteceu");
+            return const BoxError();
           }
 
           if (snapshot.hasData && !snapshot.data!.exists) {
@@ -200,7 +201,7 @@ class _PerfilPageState extends State<PerfilPage> {
           tipo: TipoMensagem.erro,
         );
       } else {
-        Get.offAllNamed('/login');
+        Get.offAllNamed(Routes.boasVindasLoginRoute);
       }
     });
   }

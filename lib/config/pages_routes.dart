@@ -7,6 +7,7 @@ import 'package:shop_fusion/views/pages/carrinho_page.dart';
 import 'package:shop_fusion/views/pages/categoria_page.dart';
 import 'package:shop_fusion/views/pages/favorito_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/categoria_produtos_page.dart';
+import 'package:shop_fusion/views/pages/interior_pages/chat_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/compra_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/pagamento_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/pedido_page.dart';
@@ -71,6 +72,10 @@ abstract class Pages {
       name: Routes.produtoDetalheRoute,
     ),
     GetPage(
+      page: () => const ChatPage(),
+      name: Routes.chatRoute,
+    ),
+    GetPage(
       page: () => const CompraPage(),
       name: Routes.comprarRoute,
     ),
@@ -99,6 +104,7 @@ abstract class Routes {
   static const String perfilRoute = '/perfil';
   static const String categoriaProdutosRoute = '/categoriaProdutos';
   static const String produtoDetalheRoute = '/produtoDetalhe';
+  static const String chatRoute = '/chat';
   static const String comprarRoute = '/comprar';
   static const String pagamentoRoute = '/pagamento';
   static const String pedidoRoute = '/pedido';

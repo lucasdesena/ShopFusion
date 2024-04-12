@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
+import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
 class CategoriaPage extends StatelessWidget {
@@ -30,7 +31,7 @@ class CategoriaPage extends StatelessWidget {
         stream: categoriasStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Algo deu errado');
+            return const BoxError();
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -50,10 +51,12 @@ class CategoriaPage extends StatelessWidget {
                 final categoria = snapshot.data!.docs[index];
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(Routes.categoriaProdutosRoute,
+                    Get.toNamed(
+                      Routes.categoriaProdutosRoute,
 
-                        ///Passando argumento na rota
-                        arguments: categoria);
+                      ///Passando argumento na rota
+                      arguments: categoria,
+                    );
                   },
                   child: Container(
                     decoration: BoxDecoration(

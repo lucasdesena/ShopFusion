@@ -108,6 +108,13 @@ class _ClienteLoginPageState extends State<ClienteLoginPage> {
     );
   }
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    senhaController.dispose();
+    super.dispose();
+  }
+
   Future<void> login() async {
     if (_formKey.currentState!.validate()) {
       await _authController
@@ -119,7 +126,7 @@ class _ClienteLoginPageState extends State<ClienteLoginPage> {
             tipo: TipoMensagem.erro,
           );
         } else {
-          Get.offAllNamed('/map');
+          Get.offAllNamed(Routes.mapaRoute);
         }
       });
     }

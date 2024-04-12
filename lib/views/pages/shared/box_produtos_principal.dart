@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_produto_model.dart';
 
 class BoxProdutosPrincipal extends StatelessWidget {
@@ -14,7 +15,7 @@ class BoxProdutosPrincipal extends StatelessWidget {
       stream: produtosStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return const Text('Algo deu errado');
+          return const BoxError();
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/services/utils_services.dart';
@@ -77,7 +78,7 @@ class _MapaPageState extends State<MapaPage> {
                         const EdgeInsets.only(top: 12, bottom: 12),
                       ),
                       onPressed: () {
-                        Get.offAllNamed('/main');
+                        Get.offAllNamed(Routes.mainRoute);
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +120,7 @@ class _MapaPageState extends State<MapaPage> {
           tipo: TipoMensagem.erro,
         );
       } else {
-        Get.offAllNamed('/login');
+        Get.offAllNamed(Routes.boasVindasLoginRoute);
       }
     });
   }

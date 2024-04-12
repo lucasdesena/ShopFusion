@@ -55,7 +55,7 @@ class CompraController extends GetxController {
       });
 
       _pedidoRealizado.value = true;
-    } catch (error) {
+    } catch (_) {
       mensagemErro = 'Houve um erro ao tentar finalizar a compra!';
     }
 

@@ -159,6 +159,14 @@ class _ClienteCadastroPageState extends State<ClienteCadastroPage> {
     );
   }
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    nomeController.dispose();
+    senhaController.dispose();
+    super.dispose();
+  }
+
   Future<void> selecionarImagemGaleria() async {
     var img = await _authController.escolherImagemPerfil(ImageSource.gallery);
 
