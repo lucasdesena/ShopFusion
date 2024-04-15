@@ -92,6 +92,7 @@ class _ChatPageState extends State<ChatPage> {
                             )
                           : CircleAvatar(
                               child: Container(
+                                width: MediaQuery.of(context).size.width,
                                 clipBehavior: Clip.hardEdge,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,

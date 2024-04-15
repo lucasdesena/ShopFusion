@@ -9,6 +9,7 @@ import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/controllers/categoria_controller.dart';
 import 'package:shop_fusion/controllers/chat_controller.dart';
 import 'package:shop_fusion/controllers/compra_controller.dart';
+import 'package:shop_fusion/controllers/perfil_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         Get.put(CompraController());
         Get.put(CategoriaController());
         Get.put(ChatController());
+        Get.put(PerfilController());
       }),
     );
   }

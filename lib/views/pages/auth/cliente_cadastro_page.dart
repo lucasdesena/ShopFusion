@@ -24,9 +24,9 @@ class _ClienteCadastroPageState extends State<ClienteCadastroPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final emailController = TextEditingController();
-  final nomeController = TextEditingController();
-  final senhaController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
 
   Uint8List? _image;
 

@@ -22,7 +22,7 @@ class CompraController extends GetxController {
     _loading.value = true;
 
     try {
-      DocumentSnapshot userDoc = await _firestore
+      DocumentSnapshot usuarioDoc = await _firestore
           .collection('compradores')
           .doc(_auth.currentUser!.uid)
           .get();
@@ -40,10 +40,10 @@ class CompraController extends GetxController {
           'nome_produto': item.nomeProduto,
           'quantidade_requisitada': item.quantidade,
           'preço': item.quantidade * item.preco,
-          'nome': (userDoc.data() as Map<String, dynamic>)['nome'],
-          'email': (userDoc.data() as Map<String, dynamic>)['email'],
+          'nome': (usuarioDoc.data() as Map<String, dynamic>)['nome'],
+          'email': (usuarioDoc.data() as Map<String, dynamic>)['email'],
           'imagem_perfil':
-              (userDoc.data() as Map<String, dynamic>)['imagem_perfil'],
+              (usuarioDoc.data() as Map<String, dynamic>)['imagem_perfil'],
           'id_comprador': _auth.currentUser!.uid,
           'id_vendedor': item.idVendedor,
           'tamanho_produto': item.tamanhoProduto,

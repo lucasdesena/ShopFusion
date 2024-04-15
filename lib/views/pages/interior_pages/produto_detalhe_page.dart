@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,6 +10,7 @@ import 'package:shop_fusion/provider/tamanho_provider.dart';
 import 'package:shop_fusion/services/utils_services.dart';
 import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ProdutoDetalhePage extends ConsumerStatefulWidget {
   const ProdutoDetalhePage({super.key});
@@ -26,6 +28,8 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
 
   ///Pegando parametros
   final dynamic parameters = Get.parameters;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
@@ -292,7 +296,21 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                await _firestore
+                    .collection('vendedores')
+                    .where('id_vendedor', isEqualTo: args['id_vendedor'])
+                    .get()
+                    .then((QuerySnapshot snapshot) {
+                  if (snapshot.docs.isNotEmpty) {
+                    // Acessa o documento
+                    var vendedor =
+                        snapshot.docs.first.data() as Map<String, dynamic>;
+
+                    ligarParaFornecedor(vendedor['telefone']);
+                  }
+                });
+              },
               icon: const Icon(
                 CupertinoIcons.phone,
                 color: Colors.deepPurple,
@@ -302,5 +320,17 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
         ),
       ),
     );
+  }
+
+  void ligarParaFornecedor(String numeroTelefone) async {
+    final String url = "tel:$numeroTelefone";
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      utils.showToast(
+        message: 'Não foi possível abrir o aplicativo de chamada telefônica.',
+        tipo: TipoMensagem.erro,
+      );
+    }
   }
 }

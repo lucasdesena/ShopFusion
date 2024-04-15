@@ -21,8 +21,8 @@ class _ClienteLoginPageState extends State<ClienteLoginPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final emailController = TextEditingController();
-  final senhaController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
