@@ -43,7 +43,6 @@ app.*.map.json
 # Flutter will place build artifacts here
 /android/app/src/
 
-
 # Dotenv environment variables file
 .env*
 

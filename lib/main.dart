@@ -1,8 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:shop_fusion/views/pages/auth/login_page.dart';
+import 'package:shop_fusion/config/pages_routes.dart';
+import 'package:shop_fusion/controllers/auth_controller.dart';
+import 'package:shop_fusion/controllers/categoria_controller.dart';
+import 'package:shop_fusion/controllers/chat_controller.dart';
+import 'package:shop_fusion/controllers/compra_controller.dart';
+import 'package:shop_fusion/controllers/perfil_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +25,11 @@ void main() async {
     ),
   );
 
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(const ProviderScope(child: MyApp()));
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -26,14 +37,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'ShopFusion',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      getPages: Pages.pages,
+      initialRoute: Routes.boasVindasLoginRoute,
+      initialBinding: BindingsBuilder(() {
+        Get.put(AuthController());
+        Get.put(CompraController());
+        Get.put(CategoriaController());
+        Get.put(ChatController());
+        Get.put(PerfilController());
+      }),
     );
   }
 }

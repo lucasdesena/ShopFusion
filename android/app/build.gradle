@@ -25,7 +25,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.shop_fusion"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -67,4 +67,5 @@ flutter {
 
 dependencies {
     implementation platform("com.google.firebase:firebase-bom:32.7.1")
+    implementation platform("com.google.android.gms:play-services-location:19.0.1")
 }
