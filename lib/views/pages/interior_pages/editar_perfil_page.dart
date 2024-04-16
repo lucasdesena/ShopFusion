@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/perfil_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
@@ -37,7 +38,10 @@ class _EditarPerfilPageState extends State<EditarPerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Editar Perfil'),
+        title: Text(
+          'Editar Perfil',
+          style: GoogleFonts.lato(),
+        ),
       ),
       body: Center(
         child: Padding(
@@ -45,9 +49,9 @@ class _EditarPerfilPageState extends State<EditarPerfilPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Edite seus dados',
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -74,9 +78,14 @@ class _EditarPerfilPageState extends State<EditarPerfilPage> {
                   style: BoxElevatedButtonStyle.style(
                     const EdgeInsets.all(14),
                   ),
-                  child: const Text(
+                  child: Text(
                     'SALVAR',
-                    style: TextStyle(color: Colors.white),
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 16,
+                      letterSpacing: 4,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

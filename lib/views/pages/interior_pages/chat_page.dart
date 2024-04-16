@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/controllers/chat_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
@@ -42,7 +43,8 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text(
           'Chat - ${args['nome_produto']}',
-          style: const TextStyle(
+          maxLines: 2,
+          style: GoogleFonts.lato(
             fontSize: 17,
             fontWeight: FontWeight.bold,
             letterSpacing: 3,
@@ -86,8 +88,10 @@ class _ChatPageState extends State<ChatPage> {
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
-                                child:
-                                    BoxImageNetwork(data['imagem_comprador']),
+                                child: BoxImageNetwork(
+                                  data['imagem_comprador'],
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             )
                           : CircleAvatar(
@@ -97,13 +101,19 @@ class _ChatPageState extends State<ChatPage> {
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
-                                child: BoxImageNetwork(data['imagem_vendedor']),
+                                child: BoxImageNetwork(
+                                  data['imagem_vendedor'],
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                      title: Text(data['mensagem']),
+                      title: Text(
+                        data['mensagem'],
+                        style: GoogleFonts.lato(),
+                      ),
                       subtitle: Text(
                         'Enviada pelo $tipoRemetente',
-                        style: const TextStyle(fontStyle: FontStyle.italic),
+                        style: GoogleFonts.lato(fontStyle: FontStyle.italic),
                       ),
                     );
                   }).toList(),

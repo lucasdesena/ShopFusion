@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
@@ -15,14 +16,14 @@ class CategoriaPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           children: [
-            Icon(Icons.category),
-            SizedBox(height: 5),
+            const Icon(Icons.category),
+            const SizedBox(height: 5),
             Text(
               'Categorias',
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 5),
+              style: GoogleFonts.poppins(
+                  fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 5),
             ),
           ],
         ),
@@ -82,8 +83,10 @@ class CategoriaPage extends StatelessWidget {
                         const SizedBox(height: 5),
                         Text(
                           categoria['nome_categoria'],
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),

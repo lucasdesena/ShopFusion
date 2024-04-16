@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_produto_model.dart';
 
@@ -25,11 +26,11 @@ class BoxProdutoMasculino extends StatelessWidget {
         }
 
         if (snapshot.data!.docs.isEmpty) {
-          return const Center(
+          return Center(
             child: Text(
               'Nenhum produto masculino',
-              style: TextStyle(
-                fontSize: 18,
+              style: GoogleFonts.poppins(
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueGrey,
                 letterSpacing: 4,

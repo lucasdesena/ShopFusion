@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/provider/favorito_provider.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
@@ -20,10 +21,10 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Lista de desejos',
-          style: TextStyle(
-            fontSize: 18,
+          style: GoogleFonts.poppins(
+            fontSize: 16,
             fontWeight: FontWeight.bold,
             letterSpacing: 4,
           ),
@@ -67,15 +68,15 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
                             children: [
                               Text(
                                 lista.nomeProduto,
-                                style: const TextStyle(
-                                  fontSize: 18,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 'R\$ ${lista.preco.toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                                style: const TextStyle(
-                                  fontSize: 18,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.deepPurple,
                                 ),
@@ -96,15 +97,15 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
                 );
               },
             )
-          : const Center(
+          : Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Lista de desejos vazia',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 22,
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 5,
                     ),
@@ -112,7 +113,7 @@ class _FavoritoPageState extends ConsumerState<FavoritoPage> {
                   Text(
                     'Nenhum item adicionado a sua lista de desejos.\nVocê pode adicionar pela página princpal.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontWeight: FontWeight.bold,
                       color: Colors.blueGrey,
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/compra_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
@@ -28,9 +29,9 @@ class _CompraPageState extends ConsumerState<CompraPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Comprar',
-          style: TextStyle(
+          style: GoogleFonts.lato(
             fontSize: 20,
             fontWeight: FontWeight.w500,
             letterSpacing: 5,
@@ -65,22 +66,22 @@ class _CompraPageState extends ConsumerState<CompraPage> {
                       children: [
                         Text(
                           item.nomeProduto,
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'R\$ ${item.preco.toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.deepPurple,
                           ),
                         ),
                         Text(
                           'Quantidade: ${item.quantidade}',
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
                           ),
@@ -127,7 +128,7 @@ class _CompraPageState extends ConsumerState<CompraPage> {
                 ? const CircularProgressIndicator()
                 : Text(
                     'COMPRAR R\$ ${valorTotal.toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

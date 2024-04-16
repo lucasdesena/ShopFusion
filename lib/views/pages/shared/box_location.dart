@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BoxLocation extends StatelessWidget {
   const BoxLocation({super.key});
@@ -26,11 +27,16 @@ class BoxLocation extends StatelessWidget {
             child: SizedBox(
               width: 300,
               child: TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
                   hintText: 'Localização atual',
                   labelText: 'Localização atual',
+                  labelStyle: GoogleFonts.lato(
+                    fontSize: 16,
+                    letterSpacing: 0.2,
+                    fontWeight: FontWeight.w500,
+                  ),
                   border: InputBorder.none,
                   isDense: true,
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BoxReutilizarText extends StatefulWidget {
   final String title;
@@ -15,8 +16,8 @@ class _BoxReutilizarTextState extends State<BoxReutilizarText> {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         widget.title,
-        style: const TextStyle(
-          fontSize: 20,
+        style: GoogleFonts.poppins(
+          fontSize: 18,
           fontWeight: FontWeight.bold,
           letterSpacing: 4,
         ),

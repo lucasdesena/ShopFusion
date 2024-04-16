@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
@@ -54,7 +55,7 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
       appBar: AppBar(
         title: Text(
           args['nome_produto'],
-          style: const TextStyle(
+          style: GoogleFonts.lato(
             fontSize: 19,
             fontWeight: FontWeight.bold,
             letterSpacing: 4,
@@ -124,8 +125,8 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                 children: [
                   Text(
                     args['nome_produto'],
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 4,
                     ),
@@ -133,32 +134,33 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                   const SizedBox(height: 20),
                   Text(
                     'R\$ ${args['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                    style: const TextStyle(
-                      fontSize: 20,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
                       color: Colors.deepPurple,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 10),
                   ExpansionTile(
-                    title: const Row(
+                    childrenPadding: const EdgeInsets.all(10),
+                    title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Descrição do produto',
-                          style: TextStyle(color: Colors.deepPurple),
+                          style: GoogleFonts.lato(color: Colors.deepPurple),
                         ),
                         Text(
                           'Ver mais',
-                          style: TextStyle(color: Colors.deepPurple),
+                          style: GoogleFonts.lato(color: Colors.deepPurple),
                         ),
                       ],
                     ),
                     children: [
                       Text(
                         args['descrição'],
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: GoogleFonts.lato(
+                          fontSize: 15,
                           letterSpacing: 2,
                         ),
                       ),
@@ -166,9 +168,9 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                   ),
                   const SizedBox(height: 10),
                   ExpansionTile(
-                    title: const Text(
+                    title: Text(
                       'Variação do produto',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: GoogleFonts.lato(fontWeight: FontWeight.bold),
                     ),
                     children: [
                       SizedBox(
@@ -189,7 +191,10 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                                       .setTamanhoSelecionado(
                                           tamanhoSelecionado);
                                 },
-                                child: Text(args['medidas'][index]),
+                                child: Text(
+                                  args['medidas'][index],
+                                  style: GoogleFonts.lato(),
+                                ),
                               ),
                             );
                           },
@@ -215,14 +220,14 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                     ),
                     title: Text(
                       args['razão_social'],
-                      style: const TextStyle(
-                        fontSize: 17,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: const Text(
+                    subtitle: Text(
                       'Ver perfil',
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         color: Colors.deepPurple,
                         fontWeight: FontWeight.bold,
                       ),
@@ -272,7 +277,7 @@ class _ProdutoDetalhePageState extends ConsumerState<ProdutoDetalhePage> {
                   ),
                   label: Text(
                     isInCarrinho ? 'NO CARRINHO' : 'ADICIONAR',
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 17,
                       color: Colors.white,
                       letterSpacing: 5,

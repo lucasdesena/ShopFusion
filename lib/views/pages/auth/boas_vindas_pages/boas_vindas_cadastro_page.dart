@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/views/pages/shared/box_elevated_button_style.dart';
 
@@ -30,7 +31,7 @@ class _BoasVindasCadastroPageState extends State<BoasVindasCadastroPage> {
               top: 0,
               left: -40,
               child: Image.asset(
-                'assets/icons/doorpng2.png',
+                'assets/images/texture.png',
                 width: larguraTela + 80,
                 height: alturaTela + 100,
                 fit: BoxFit.contain,
@@ -39,7 +40,7 @@ class _BoasVindasCadastroPageState extends State<BoasVindasCadastroPage> {
             Positioned(
               left: larguraTela * 0.024,
               top: larguraTela * 0.151,
-              child: Image.asset('assets/icons/Illustration2.png'),
+              child: Image.asset('assets/images/Illustration.png'),
             ),
             Positioned(
               top: alturaTela * 0.641,
@@ -54,9 +55,9 @@ class _BoasVindasCadastroPageState extends State<BoasVindasCadastroPage> {
                   style: BoxElevatedButtonStyle.style(const EdgeInsets.all(14)),
                   child: Text(
                     'Cadastrar como Cliente',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontSize: alturaTela * 0.022,
+                      fontSize: alturaTela * 0.020,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -74,9 +75,9 @@ class _BoasVindasCadastroPageState extends State<BoasVindasCadastroPage> {
                   style: BoxElevatedButtonStyle.style(const EdgeInsets.all(14)),
                   child: Text(
                     'Cadastrar como Vendedor',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontSize: alturaTela * 0.022,
+                      fontSize: alturaTela * 0.020,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -88,9 +89,9 @@ class _BoasVindasCadastroPageState extends State<BoasVindasCadastroPage> {
               left: larguraTela * 0.065,
               child: Row(
                 children: [
-                  const Text(
+                  Text(
                     'Já possui uma conta?',
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -100,9 +101,9 @@ class _BoasVindasCadastroPageState extends State<BoasVindasCadastroPage> {
                     onTap: () {
                       Get.offAndToNamed(Routes.boasVindasLoginRoute);
                     },
-                    child: const Text(
+                    child: Text(
                       'Login',
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),

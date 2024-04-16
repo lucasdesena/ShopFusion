@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/compra_controller.dart';
 import 'package:shop_fusion/provider/carrinho_provider.dart';
@@ -25,10 +26,10 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Carrinho',
-          style: TextStyle(
-            fontSize: 20,
+          style: GoogleFonts.poppins(
+            fontSize: 18,
             fontWeight: FontWeight.w500,
             letterSpacing: 5,
           ),
@@ -75,15 +76,15 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                             children: [
                               Text(
                                 item.nomeProduto,
-                                style: const TextStyle(
-                                  fontSize: 18,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
                                 'R\$ ${item.preco.toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                                style: const TextStyle(
-                                  fontSize: 18,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.deepPurple,
                                 ),
@@ -114,7 +115,7 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                                         ),
                                         Text(
                                           item.quantidade.toString(),
-                                          style: const TextStyle(
+                                          style: GoogleFonts.lato(
                                             color: Colors.white,
                                           ),
                                         ),
@@ -155,15 +156,15 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                 );
               },
             )
-          : const Center(
+          : Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Carrinho vazio',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 22,
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 5,
                     ),
@@ -171,7 +172,7 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                   Text(
                     'Nenhum item adicionado ao seu carrinho.\nVocê pode adicionar pela página do produto.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontWeight: FontWeight.bold,
                       color: Colors.blueGrey,
                     ),
@@ -190,17 +191,17 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           'Preço Total',
-                          style: TextStyle(
-                            fontSize: 18,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 4,
                           ),
                         ),
                         Text(
                           'R\$ ${valorTotal.toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                          style: const TextStyle(
+                          style: GoogleFonts.lato(
                             color: Colors.deepPurple,
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -220,9 +221,9 @@ class _CarrinhoPageState extends ConsumerState<CarrinhoPage> {
                       style: BoxElevatedButtonStyle.style(
                         const EdgeInsets.all(14),
                       ),
-                      child: const Text(
+                      child: Text(
                         'COMPRAR',
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.poppins(color: Colors.white),
                       ),
                     ),
                   ],

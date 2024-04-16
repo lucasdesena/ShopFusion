@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
@@ -24,7 +25,10 @@ class _PedidoPageState extends State<PedidoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pedidos'),
+        title: Text(
+          'Pedidos',
+          style: GoogleFonts.lato(),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: categoriasStream,
@@ -62,7 +66,7 @@ class _PedidoPageState extends State<PedidoPage> {
                         title: data['aceito']
                             ? Text(
                                 'Aceito',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.green.shade700,
@@ -70,7 +74,7 @@ class _PedidoPageState extends State<PedidoPage> {
                               )
                             : Text(
                                 'Não Aceito',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.red.shade700,
@@ -78,7 +82,7 @@ class _PedidoPageState extends State<PedidoPage> {
                               ),
                         trailing: Text(
                           'R\$ ${data['preço'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                          style: const TextStyle(
+                          style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey,
@@ -88,11 +92,14 @@ class _PedidoPageState extends State<PedidoPage> {
                       ExpansionTile(
                         title: Text(
                           'Detalhes',
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                             color: Colors.deepPurple.shade900,
                           ),
                         ),
-                        subtitle: const Text('Veja os detalhes do pedido'),
+                        subtitle: Text(
+                          'Veja os detalhes do pedido',
+                          style: GoogleFonts.lato(),
+                        ),
                         children: [
                           ListTile(
                             contentPadding: const EdgeInsets.all(8.0),
@@ -112,7 +119,7 @@ class _PedidoPageState extends State<PedidoPage> {
                               children: [
                                 Text(
                                   data['nome_produto'],
-                                  style: const TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -120,16 +127,16 @@ class _PedidoPageState extends State<PedidoPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Quantidade',
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                     Text(
                                       data['quantidade_requisitada'].toString(),
-                                      style: TextStyle(
+                                      style: GoogleFonts.lato(
                                         color: Colors.deepPurple.shade900,
                                       ),
                                     ),
@@ -140,9 +147,9 @@ class _PedidoPageState extends State<PedidoPage> {
                             subtitle: ListTile(
                               contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 12),
-                              title: const Text(
+                              title: Text(
                                 'Detalhes do cliente',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -153,7 +160,7 @@ class _PedidoPageState extends State<PedidoPage> {
                                   const SizedBox(height: 8),
                                   Text(
                                     'Nome:',
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.grey[600],
@@ -161,7 +168,7 @@ class _PedidoPageState extends State<PedidoPage> {
                                   ),
                                   Text(
                                     data['nome'],
-                                    style: const TextStyle(
+                                    style: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -169,7 +176,7 @@ class _PedidoPageState extends State<PedidoPage> {
                                   const SizedBox(height: 8),
                                   Text(
                                     'Email:',
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.grey[600],
@@ -177,7 +184,7 @@ class _PedidoPageState extends State<PedidoPage> {
                                   ),
                                   Text(
                                     data['email'],
-                                    style: const TextStyle(
+                                    style: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -185,7 +192,7 @@ class _PedidoPageState extends State<PedidoPage> {
                                   const SizedBox(height: 8),
                                   Text(
                                     'Data do Pedido:',
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.grey[600],
@@ -193,7 +200,7 @@ class _PedidoPageState extends State<PedidoPage> {
                                   ),
                                   Text(
                                     '${data['data_pedido']}',
-                                    style: const TextStyle(
+                                    style: GoogleFonts.lato(
                                       fontSize: 14,
                                       color: Colors.blue,
                                     ),

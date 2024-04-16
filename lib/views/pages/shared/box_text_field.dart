@@ -1,10 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class BoxTextField extends StatefulWidget {
-  final IconData icon;
+  final IconData? icon;
   final String label;
   final bool isSenha;
   final List<TextInputFormatter>? inputFormatters;
@@ -22,7 +23,7 @@ class BoxTextField extends StatefulWidget {
 
   const BoxTextField({
     super.key,
-    required this.icon,
+    this.icon,
     required this.label,
     this.isSenha = false,
     this.inputFormatters,
@@ -118,6 +119,11 @@ class _BoxTextFieldState extends State<BoxTextField> {
                       })
                   : null,
               label: Text(widget.label),
+              labelStyle: GoogleFonts.lato(
+                fontSize: 16,
+                letterSpacing: 0.2,
+                fontWeight: FontWeight.w500,
+              ),
               isDense: true,
             ),
           ),

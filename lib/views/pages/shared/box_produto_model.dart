@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/provider/favorito_provider.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
@@ -80,11 +81,11 @@ class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
                         children: [
                           Text(
                             widget.produto['nome_produto'],
-                            style: const TextStyle(
-                              fontSize: 18,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 3,
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: const Color.fromARGB(255, 0, 0, 0),
                             ),
                             softWrap: false,
                             maxLines: 1,
@@ -93,8 +94,8 @@ class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
                           const SizedBox(height: 5),
                           Text(
                             'R\$ ${widget.produto['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                            style: const TextStyle(
-                              fontSize: 18,
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 4,
                               color: Colors.deepPurple,
@@ -110,7 +111,7 @@ class _BoxProdutoModelState extends ConsumerState<BoxProdutoModel> {
           ),
           Positioned(
             right: 15,
-            top: 15,
+            top: 30,
             child: IconButton(
               onPressed: () {
                 providerFavorito.adicionarProdutoFavoritos(

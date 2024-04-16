@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/views/pages/shared/box_error.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
@@ -33,7 +34,7 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
       appBar: AppBar(
         title: Text(
           nomeCategoria,
-          style: const TextStyle(
+          style: GoogleFonts.lato(
             fontWeight: FontWeight.bold,
             letterSpacing: 4,
           ),
@@ -51,11 +52,11 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
           }
 
           if (snapshot.data!.docs.isEmpty) {
-            return const Center(
+            return Center(
               child: Text(
                 'Nenhum produto\nnessa categoria',
-                style: TextStyle(
-                  fontSize: 22,
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
                   color: Colors.blueGrey,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 5,
@@ -104,8 +105,8 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           produto['nome_produto'],
-                          style: const TextStyle(
-                            fontSize: 18,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 4,
                           ),
@@ -113,8 +114,8 @@ class _CategoriaProdutosPageState extends State<CategoriaProdutosPage> {
                       ),
                       Text(
                         'R\$ ${produto['preço_produto'].toStringAsFixed(2).toString().replaceAll('.', ',')}',
-                        style: const TextStyle(
-                          fontSize: 18,
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 4,
                           color: Colors.deepPurple,

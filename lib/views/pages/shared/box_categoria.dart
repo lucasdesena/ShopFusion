@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/controllers/categoria_controller.dart';
 import 'package:shop_fusion/views/pages/shared/box_image_network.dart';
 
@@ -13,22 +14,22 @@ class BoxCategoria extends StatelessWidget {
     return Obx(() {
       return Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(10.0),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Categorias',
-                  style: TextStyle(
-                    fontSize: 18,
+                  style: GoogleFonts.poppins(
+                    fontSize: 17,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 Text(
                   'Mostrar Tudo',
-                  style: TextStyle(
-                    fontSize: 18,
+                  style: GoogleFonts.poppins(
+                    fontSize: 17,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -65,7 +66,7 @@ class BoxCategoria extends StatelessWidget {
                     Text(
                       categoriaController.categorias[index].nomeCategoria
                           .toUpperCase(),
-                      style: const TextStyle(
+                      style: GoogleFonts.lato(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),

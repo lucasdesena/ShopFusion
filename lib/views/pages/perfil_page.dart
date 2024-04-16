@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 import 'package:shop_fusion/controllers/auth_controller.dart';
 import 'package:shop_fusion/models/tipo_mensagem.dart';
@@ -27,9 +28,9 @@ class _PerfilPageState extends State<PerfilPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Perfil',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             letterSpacing: 4,
@@ -81,8 +82,8 @@ class _PerfilPageState extends State<PerfilPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         data['nome'].toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 20,
+                        style: GoogleFonts.poppins(
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 5,
                         ),
@@ -92,7 +93,7 @@ class _PerfilPageState extends State<PerfilPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         data['email'],
-                        style: const TextStyle(
+                        style: GoogleFonts.lato(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 4,
@@ -105,7 +106,10 @@ class _PerfilPageState extends State<PerfilPage> {
                         onPressed: () {
                           Get.toNamed(Routes.editarPerfilRoute);
                         },
-                        child: const Text('Editar perfil'),
+                        child: Text(
+                          'Editar perfil',
+                          style: GoogleFonts.lato(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     const Padding(
@@ -115,41 +119,41 @@ class _PerfilPageState extends State<PerfilPage> {
                         color: Colors.grey,
                       ),
                     ),
-                    const ListTile(
-                      leading: Icon(
+                    ListTile(
+                      leading: const Icon(
                         Icons.settings,
                       ),
                       title: Text(
                         'Configurações',
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    const ListTile(
-                      leading: Icon(
+                    ListTile(
+                      leading: const Icon(
                         Icons.phone,
                       ),
                       title: Text(
                         'Telefone',
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
                         '+55 27 999999999',
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    const ListTile(
-                      leading: Icon(
+                    ListTile(
+                      leading: const Icon(
                         Icons.shopping_cart,
                       ),
                       title: Text(
                         'Carrinho',
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -161,9 +165,9 @@ class _PerfilPageState extends State<PerfilPage> {
                       leading: const Icon(
                         Icons.shopping_bag_outlined,
                       ),
-                      title: const Text(
+                      title: Text(
                         'Pedidos',
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -175,9 +179,9 @@ class _PerfilPageState extends State<PerfilPage> {
                       leading: const Icon(
                         Icons.logout,
                       ),
-                      title: const Text(
+                      title: Text(
                         'Sair',
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold,
                           color: Colors.deepPurple,
                         ),
