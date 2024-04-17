@@ -3,9 +3,9 @@ import 'package:shop_fusion/views/pages/auth/boas_vindas_pages/boas_vindas_cadas
 import 'package:shop_fusion/views/pages/auth/boas_vindas_pages/boas_vindas_login_page.dart';
 import 'package:shop_fusion/views/pages/auth/cliente_cadastro_page.dart';
 import 'package:shop_fusion/views/pages/auth/cliente_login_page.dart';
-import 'package:shop_fusion/views/pages/carrinho_page.dart';
-import 'package:shop_fusion/views/pages/categoria_page.dart';
-import 'package:shop_fusion/views/pages/favorito_page.dart';
+import 'package:shop_fusion/views/pages/exterior_pages/carrinho_page.dart';
+import 'package:shop_fusion/views/pages/exterior_pages/categoria_page.dart';
+import 'package:shop_fusion/views/pages/exterior_pages/favorito_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/categoria_produtos_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/chat_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/compra_page.dart';
@@ -13,10 +13,10 @@ import 'package:shop_fusion/views/pages/interior_pages/editar_perfil_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/pagamento_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/pedido_page.dart';
 import 'package:shop_fusion/views/pages/interior_pages/produto_detalhe_page.dart';
-import 'package:shop_fusion/views/pages/perfil_page.dart';
-import 'package:shop_fusion/views/pages/principal_page.dart';
+import 'package:shop_fusion/views/pages/exterior_pages/perfil_page.dart';
+import 'package:shop_fusion/views/pages/exterior_pages/principal_page.dart';
 import 'package:shop_fusion/views/pages/main_page.dart';
-import 'package:shop_fusion/views/pages/mapa_page.dart';
+import 'package:shop_fusion/views/pages/exterior_pages/mapa_page.dart';
 
 abstract class Pages {
   static final pages = <GetPage>[

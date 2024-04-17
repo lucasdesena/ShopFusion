@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:shop_fusion/config/pages_routes.dart';
 
 class MainPage extends StatefulWidget {
@@ -22,31 +22,28 @@ class _MainPageState extends State<MainPage> {
             currentPageIndex.value = value;
           });
         },
-        selectedItemColor: Colors.deepPurple,
         currentIndex: currentPageIndex.value,
-        items: [
+        type: BottomNavigationBarType.fixed,
+        items: const [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/store-1.svg',
-              width: 25,
-            ),
-            label: 'PRINCIPAL',
+            icon: Icon(HeroIcons.home, size: 30),
+            label: 'Principal',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/explore.svg'),
-            label: 'CATEGORIA',
+            icon: Icon(LineAwesome.heart_solid, size: 30),
+            label: 'Favorito',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/cart.svg'),
-            label: 'CARRINHO',
+            icon: Icon(MingCute.shopping_bag_2_fill, size: 30),
+            label: 'Categoria',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/favorite.svg'),
-            label: 'FAVORITO',
+            icon: Icon(IonIcons.cart, size: 30),
+            label: 'Carrinho',
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/account.svg'),
-            label: 'PERFIL',
+            icon: Icon(EvaIcons.person, size: 30),
+            label: 'Perfil',
           ),
         ],
       ),
@@ -58,15 +55,15 @@ class _MainPageState extends State<MainPage> {
                 .page();
           case 1:
             return Pages.pages
-                .firstWhere((page) => page.name == Routes.categoriaRoute)
+                .firstWhere((page) => page.name == Routes.favoritoRoute)
                 .page();
           case 2:
             return Pages.pages
-                .firstWhere((page) => page.name == Routes.carrinhoRoute)
+                .firstWhere((page) => page.name == Routes.categoriaRoute)
                 .page();
           case 3:
             return Pages.pages
-                .firstWhere((page) => page.name == Routes.favoritoRoute)
+                .firstWhere((page) => page.name == Routes.carrinhoRoute)
                 .page();
           case 4:
             return Pages.pages
